@@ -38,7 +38,6 @@ function App() {
   }
   const judgement = (user,computer) => {
     console.log("user",user, "computer", computer)
-
     // user == computer _ tie
     // user == rock, computer == scissors _ user win
     // user == rock, computer == paper _ user lost
@@ -50,9 +49,10 @@ function App() {
       return "tie"
     }else if (user.name=="Rock"){return computer.name=="Scissors"?"win":"lose"
     }else if (user.name=="Scissors"){return computer.name=="Paper"?"win":"lose"
-    }else if (user.name=="Paper"){return computer.name=="Rock"?"Win":"lose"}
+    }else if (user.name=="Paper"){return computer.name=="Rock"?"win":"lose"}
 
   }
+
   const randomChoice = () => {
     let itemArray = Object.keys(choice) //객체에 키값만 뽑아서 어레이로 만들어주는 함수
     console.log("item array", itemArray)
@@ -68,7 +68,7 @@ function App() {
         <Box title="You" item={userSelect} result={result}/>
         <Box title="Computer" item={computerSelect} result={result}/>
       </div>
-      
+      <div></div>
       <div className='main'>
         <button onClick={()=>play("scissors")}>가위</button>
         <button onClick={()=>play("rock")}>바위</button>
