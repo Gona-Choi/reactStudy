@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 
 const WeatherBox = ({weather}) => {
-  console.log("weather?", weather)
+  
   return (
       <div className='first-box'>
         <div>{weather?.name}</div>
