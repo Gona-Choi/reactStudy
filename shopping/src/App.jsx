@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router";
@@ -6,7 +6,7 @@ import Login from './Page/Login';
 import ProductAll from './Page/ProductAll';
 import ProductDetail from './Page/ProductDetail';
 import Navbar from './component/Navbar';
-import { Container, Row, Col } from "react-bootstrap";
+import PrivateRoute from './route/PrivateRoute';
 
 
 /* 
@@ -24,22 +24,21 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
   
+  const [authenticate,setAuthenticate] = useState(false)
 
+  useEffect(()=>{
+    console.log("a",authenticate)
+  },[authenticate])
   return (
     <div>
-      <Container>
-        <Row>
-          <Col>
-          </Col>
-        </Row>
-      </Container>
+      
       <Navbar />
 
       
      <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login />} /> 
-        <Route path="/product/:id" element={<ProductDetail/>} /> 
+        <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>} /> 
+        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>} /> 
       </Routes>
     </div>
   )
